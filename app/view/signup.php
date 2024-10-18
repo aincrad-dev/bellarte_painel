@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Verificar se o cadastro foi feito e se foi mudar de página, caso não  exibir um erro na variável erro
       if ($stmt->rowCount() > 0) {
         // Cadastro realizado com sucesso
-        header('Location: ./?p=login');
+        header('Location: ./');
         exit;
       } else {
         $erro = 'Erro ao cadastrar usuário';
