@@ -15,6 +15,7 @@
         <input type="text" id="composition" name="omposition">
     </div>
     <div>
+        <label for="diferentials">Diferenciais</label>
         <input type="text" name="diferentials" id="diferentials">
     </div>
     <div>

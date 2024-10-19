@@ -1,3 +1,67 @@
-form#upholstery {
-    background-color: #080808;
+body {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+div#dashboard {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+div#dashboard > aside {
+    width: 12rem;
+    padding: .5rem;
+    border-right: 1px solid  #b6b2b257;
+    cursor: pointer;
+    /* Transições para largura e opacidade */
+    transition: width .6s ease-in-out, 
+            opacity 3s ease-in-out,
+            padding .6s ease-in-out;
+
+}
+
+div#dashboard > aside.colapse {
+    width: 4rem;
+    padding: 0;
+    overflow: hidden;
+}
+
+div#dashboard > aside.colapse ul {
+    opacity: 0;
+}
+
+div#dashboard > main {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+div#dashboard > main > h2 {
+    font-size: 28px;
+}
+
+form#revestimento {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+form#revestimento div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 0 .2rem;
+    gap: 1rem;
+}
+
+form#revestimento input {
+    flex-grow: 1;
+    padding: .4rem;
+    margin: auto;
 }

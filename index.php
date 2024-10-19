@@ -52,6 +52,8 @@ if (empty($logged_in_user)) {
 
 </body>
 
+<script src="./script.js"></script>
+
 </html>
 <?php
 /*

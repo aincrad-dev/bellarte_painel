@@ -20,6 +20,7 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
     font-family: 'Abel', sans-serif;
+    font-size: 14pt;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -43,4 +44,10 @@ q:before, q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+
+input {
+    border-radius: .5rem;
+    /* outline: none; */
+    border: 1px  solid #c0c0c065;
 }

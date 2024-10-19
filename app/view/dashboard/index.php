@@ -2,9 +2,9 @@
 
 ?>
 
-<div class="container">
+<div class="container" id="dashboard">
   
-  <aside>
+  <aside class="colapse">
     <div>
       <span>Usuário:</span>
       <a href="./?p=logout">Sair</a>
@@ -22,6 +22,7 @@
       </li>
     </ul>
   </aside>
+  
   <main>
     <?php
       include_once('app/view/dashboard/upholstery.php')
