@@ -1,4 +1,0 @@
-[18-Oct-2024 23:11:28 UTC] PHP Warning:  Undefined variable $error in /home/alyson/aincrad/bellart/painel/app/view/login.php on line 60
-[18-Oct-2024 23:11:32 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from /home/alyson/aincrad/bellart/painel/index.php on line 3) in /home/alyson/aincrad/bellart/painel/app/view/login.php on line 27
-[19-Oct-2024 21:52:34 UTC] PHP Warning:  Undefined variable $error in /home/alyson/aincrad/bellart/painel/app/view/login.php on line 60
-[19-Oct-2024 21:53:42 UTC] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from /home/alyson/aincrad/bellart/painel/index.php on line 3) in /home/alyson/aincrad/bellart/painel/app/view/login.php on line 27
