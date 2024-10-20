@@ -5,6 +5,39 @@ body {
     flex-direction: row;
 }
 
+/* Botões para formlários */
+.btn {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-radius: 16px;
+    border: none;
+    padding: 0.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #fafafa;
+}
+
+.btn:hover {
+    filter: brightness(90%);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn.cadastrar{
+    background-color: #88c946;
+}
+
+.btn.excluir{
+    background-color: #ef373f;
+}
+
+.btn > img {
+    filter: invert(1) brightness(100);
+}
+
+
+
 div#dashboard {
     display: flex;
     height: 100vh;
@@ -42,6 +75,8 @@ div#dashboard > main {
 
 div#dashboard > main > h2 {
     font-size: 28px;
+    text-transform: uppercase;
+    
 }
 
 form#revestimento {
@@ -64,4 +99,5 @@ form#revestimento input {
     flex-grow: 1;
     padding: .4rem;
     margin: auto;
+
 }
