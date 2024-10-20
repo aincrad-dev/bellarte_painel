@@ -22,7 +22,7 @@
 
 <div class="container" id="dashboard">
   
-  <aside class="colapse">
+  <aside>
     <div>
       <span>Usuário:</span>
       <a href="./?p=logout">Sair</a>
