@@ -1,1 +1,7 @@
+
+# Remover log
 error.log
+
+
+# Ignorar todas as subpastas dentro de "public"
+public/*

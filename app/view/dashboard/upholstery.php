@@ -1,4 +1,6 @@
 <?php
+    defined('CONTROL') or die('<p class="alert-access">Acesso negado</p>');
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $reference_code  = $_POST['reference_code'];
         $type  = $_POST['type'];
@@ -9,8 +11,13 @@
 
         $uuid = uniqid('', true);
 
+        if(isset($_FILES['image_url'])) {
+            echo  "Arquivo enviado";
+        }
+
         // Processe o upload da imagem
         if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] == 0) {
+            echo "Início de imagem";
             $image = $_FILES['image_url'];
             $imageExtension = pathinfo($image['name'], PATHINFO_EXTENSION);
             $imageName = $uuid . '.' . $imageExtension;
@@ -30,10 +37,12 @@
                 exit;
             }
         } else {
+            echo "Nenhuma imagem foi enviada.";
             $imageUrl = null;
         }
-        var_dump($imageUrl);
-        die();
+
+
+        
         /*
         // Prepare a declaração SQL
         $sql = "INSERT INTO upholsteries (cod, type, composition, diferentials, color_pallete, image_url) 
@@ -56,14 +65,12 @@
 
         */
 
-        
-
 
     }
 ?>
 
 <h2>CADASTRO DE REVESTIMENTO</h2>
-<form action="" id="revestimento">
+<form action="/?q=criando-revestimento" id="revestimento" method="post" enctype="multipart/form-data">
     <div>
         <div>
             <label for="reference_code">Cod:</label>
