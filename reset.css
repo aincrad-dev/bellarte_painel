@@ -46,7 +46,18 @@ table {
     border-spacing: 0;
 }
 
+
 input {
+    font-size: 14pt;
+    font-family: 'Abel', sans-serif;
     border-radius: .5rem;
-    border: 1px  solid #c0c0c065;
+    /* border: 1px  solid #c0c0c03b; */
+    border: none;
+    background-color: rgba(0, 0, 0, 0.01);
+    padding: 0.25rem 0.5rem;    
+}
+
+input:hover {
+    filter:  brightness(45%);
+    transition: all 0.2s ease-in-out;
 }
