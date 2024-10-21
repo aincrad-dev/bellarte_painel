@@ -6,7 +6,8 @@ define('CONTROL', true);
 require_once 'app/config/routes.php';
 
 
-function guidv4($data = null) {
+function guidv4($data = null)
+{
   // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
   $data = $data ?? random_bytes(16);
   assert(strlen($data) == 16);
@@ -45,8 +46,13 @@ if (empty($logged_in_user)) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bellarte <?= $rota ? ' - ' . $rota : ''; ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./style.css">
+
+  <script src="./preload.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 </head>
 
 <body>
@@ -64,9 +70,10 @@ if (empty($logged_in_user)) {
 
   ?>
 
-</body>
-
 <script src="./script.js"></script>
+
+
+</body>
 
 </html>
 <?php
@@ -98,4 +105,3 @@ if ($loginController->verify_token()) {
     echo 'Token is invalid';
 } */
 ?>
-

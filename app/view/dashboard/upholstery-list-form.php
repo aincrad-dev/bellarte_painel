@@ -1,5 +1,6 @@
-<form action="/?c=revestimento&t=cadastro" id="revestimento" method="PUT" enctype="multipart/form-data">
+<form action="/?c=revestimento&t=atualizar" id="revestimento" method="POST" enctype="multipart/form-data">
     <div>
+      <input type="text" name="id" value="<?= $upholstery['id'] ?>" hidden />
       <div>
         <label for="reference_code">Cód:</label>
         <input type="text" name="reference_code" id="reference_code" value="<?= $upholstery['reference_code'] ?>" required />
@@ -21,7 +22,7 @@
       <label for="color_pallete">Cartela:</label>
       <input type="text" name="color_pallete" id="color_pallete" value="<?= $upholstery['color_pallete'] ?>" />
       <label for="image_url">Anexar Imagem:</label>
-      <input type="file" name="image_url" id="image_url" >
+      <input type="file" name="image_url" id="image_url" value="<?= $upholstery['image_url'] ?>" >
     </div>
 
     <div>
@@ -30,9 +31,11 @@
         <img src="/public/icon_check.svg" height="26px" />
       </button>
 
-      <button class="btn excluir">
-        <img src="/public/trash-solid.svg" height="26px" />
-      </button>
+      <a href="/?c=revestimento&t=excluir&id=<?=$upholstery['id']?>">
+        <button type="button" class="btn excluir" >
+          <img src="/public/trash-solid.svg" height="26px" />
+        </button>
+      </a>
     </div>
 
   </form>
