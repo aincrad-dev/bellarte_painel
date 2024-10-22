@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			// Redirect to the dashboard
 			header('Location:./?p=dashboard');
-			//exit;
+			exit();
 		} else {
 			echo 'passou pela senha';
 			$error = 'Usuário ou senha inválidos';
@@ -57,9 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		<a href="./?p=signup">Cadastrar-se</a>
 	</div>
 
-	<?php if($error): ?>
-		<div class="alert-error">
-			<?= $error ?>
-		</div>
+	<?php if ($erro): ?>
+		<script>showToast(<?= $erro ?>, '') </script>"
 	<?php endif; ?>
 </form>

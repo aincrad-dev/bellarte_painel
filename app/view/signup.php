@@ -41,8 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if ($stmt->rowCount() > 0) {
         // Cadastro realizado com sucesso
         header('Location: ./');
-        exit;
+        exit();
       } else {
+
         $erro = 'Erro ao cadastrar usuário';
       }
     }
@@ -87,11 +88,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <div>
     <button type="submit">Cadastrar</button>
   </div>
+  
 
   <?php if ($erro): ?>
-    <div class="alert-error">
-      <?= $erro ?>
-    </div>
+    <script>showToast(<?= $erro ?>, '') </script>"
   <?php endif; ?>
 
 </form>
