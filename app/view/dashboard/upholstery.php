@@ -36,10 +36,12 @@ if ($order == "revestimento") {
           $imageUrl = '/public/upholsteries/' . $imageName;
         } else {
           echo "<script>showToast('Falha ao fazer upload da imagem!', 'error'); </script>";
+          var_dump($_POST);
           exit;
         }
       } else {
-        //echo "<script>showToast('Nenhuma imagem foi enviada.', ''); </script>";
+        echo "<script>showToast('Nenhuma imagem foi enviada.', ''); </script>";
+        exit;
         $imageUrl = null;
       }
 
@@ -161,11 +163,7 @@ $upholsteries = $stmt->fetchAll();
 
 <h2>CADASTRO DE REVESTIMENTO</h2>
 
-<?php  if ( count($upholsteries) == 0 ): ?>
-  
-<?php include('app/view/dashboard/upholstery-new-form.php') ?>
 
-<?php else  : ?>
 
 <?php foreach ($upholsteries as $upholstery):  ?>
 
@@ -173,4 +171,6 @@ $upholsteries = $stmt->fetchAll();
 
 <?php endforeach; ?>
 
-<?php  endif; ?>
+<?php include('app/view/dashboard/upholstery-new-form.php') ?>
+
+
