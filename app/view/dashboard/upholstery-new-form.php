@@ -12,7 +12,7 @@ $t = "";
     let randomId = Math.random().toString(36).substr(2, 9);
     let newFormUpholstery = document.createElement('div')
     newFormUpholstery.innerHTML = `
-      <form action="/?c=revestimento&t=cadastrar" id="revestimento" method="POST" enctype="multipart/form-data">
+      <form action="/?c=revestimento&t=cadastrar" class="revestimento" method="POST" enctype="multipart/form-data">
         <div>
           <div>
             <label for="reference_code">Cód:</label>

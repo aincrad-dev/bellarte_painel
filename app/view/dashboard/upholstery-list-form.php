@@ -1,4 +1,4 @@
-<form action="/?c=revestimento&t=atualizar" id="revestimento" method="POST" enctype="multipart/form-data">
+<form action="/?c=revestimento&t=atualizar" class="revestimento" method="POST" enctype="multipart/form-data">
   <div>
     <input type="text" name="id" value="<?= $upholstery['id'] ?>" hidden />
     <div>
