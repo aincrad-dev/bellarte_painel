@@ -36,13 +36,15 @@ if ($order == "revestimento") {
           $imageUrl = '/public/upholsteries/' . $imageName;
         } else {
           echo "<script>showToast('Falha ao fazer upload da imagem!', 'error'); </script>";
-          var_dump($_POST);
-          exit;
+          exit();
         }
       } else {
-        echo "<script>showToast('Nenhuma imagem foi enviada.', ''); </script>";
-        exit;
-        $imageUrl = null;
+        if ( $_POST['old_image'] != null  && $_POST['old_image'] != '') {
+          $imageUrl = $_POST['old_image'];
+        } else {
+          echo "<script>showToast('Nenhuma imagem foi enviada.', ''); </script>";
+          $imageUrl = null;
+        }
       }
 
       // Prepare a declaração SQL
