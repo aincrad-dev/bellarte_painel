@@ -34,8 +34,12 @@ if ($order == "acabamento") {
           echo "<script>showToast('Falha ao fazer upload da imagem!', 'error'); </script>";
         }
       } else {
-        echo "<script>showToast('Nenhuma imagem foi enviada.', ''); </script>";
-        $imageUrl = null;
+        if ( $_POST['old_image'] != null  && $_POST['old_image'] != '') {
+          $imageUrl = $_POST['old_image'];
+        } else {
+          echo "<script>showToast('Nenhuma imagem foi enviada.', ''); </script>";
+          $imageUrl = null;
+        }
       }
 
       // Prepare a declaração SQL

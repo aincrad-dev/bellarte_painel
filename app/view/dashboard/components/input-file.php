@@ -15,3 +15,8 @@
     alt="Pré-visualização"
     onclick="document.getElementById('image_url_<?= $id ?>').click();" />
 </div>
+<input 
+  type="hidden" 
+  name="old_image" 
+  value="<?= empty($image_url) ? null : $image_url ?>"
+/>
