@@ -4,5 +4,6 @@ error.log
 
 
 # Ignorar todas as subpastas dentro de "public"
-public/*
+public/**
+!public/*
 .env
