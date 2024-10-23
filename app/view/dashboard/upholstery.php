@@ -131,7 +131,7 @@ if ($order == "revestimento") {
     } 
   } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && $type_order == "excluir")  {
     $uuid = $_GET['id'];
-    $sql = "UPDATE trims SET 
+    $sql = "UPDATE upholsteries SET 
               deleted_at = now(),
               delete_by = :user_id
             WHERE id = :id";
