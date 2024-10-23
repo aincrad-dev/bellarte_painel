@@ -10,7 +10,7 @@
     <label for="">Tipo:</label>
     <input type="text" name="type" value="<?= $trim['type'] ?>" required />
     <label for="">Cód:</label>
-    <input type="text" name="reference_code" value="<?= $trim['reference_code'] ?>" required/>
+    <input type="text" name="reference_code" value="<?= $trim['reference_code'] ?>"/>
   </div>
   <div>
     <?php

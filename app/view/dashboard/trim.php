@@ -9,7 +9,10 @@ if ($order == "acabamento") {
       $uuid = $type_order == "atualizar" ? $_POST['id'] : guidv4();
       $name = $_POST['name'];
       $type = $_POST['type'];
-      $reference_code = $_POST['reference_code'];
+      $reference_code = $_POST['reference_code'] ?? null;
+      if ($reference_code === '') {
+          $reference_code = null;
+      }
 
       // Processe o upload da imagem
       if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] == 0) {

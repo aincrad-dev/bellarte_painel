@@ -21,7 +21,7 @@
         <label for="">Tipo:</label>
         <input type="text" name="type" required />
         <label for="">Cód:</label>
-        <input type="text" name="reference_code" required/>
+        <input type="text" name="reference_code" />
       </div>
       <div>
         <label for="">Anexar Imagem:</label>
