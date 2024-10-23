@@ -1,17 +1,17 @@
-<label for="image_url_<?= $upholstery['id'] ?>">Anexar Imagem:</label>
+<label for="image_url_<?= $id ?>">Anexar Imagem:</label>
 <input
   type="file"
   name="image_url"
-  id="image_url_<?= $upholstery['id'] ?>"
+  id="image_url_<?= $id ?>"
   accept="image/*"
-  onchange="previewImage(event, '<?= $upholstery['id'] ?>')"
-  style="display: <?= !empty($upholstery['image_url']) ? 'none' : 'block' ?>;" />
+  onchange="previewImage(event, '<?= $id ?>')"
+  style="display: <?= !empty($image_url) ? 'none' : 'block' ?>;" />
 <div>
   <img
-    id="image_preview_<?= $upholstery['id'] ?>"
+    id="image_preview_<?= $id ?>"
     class="image_preview"
-    style="display: <?= empty($upholstery['image_url']) ? 'none' : 'block' ?>;"
-    src="<?= $upholstery['image_url'] ?>"
+    style="display: <?= empty($image_url) ? 'none' : 'block' ?>;"
+    src="<?= $image_url ?>"
     alt="Pré-visualização"
-    onclick="document.getElementById('image_url_<?= $upholstery['id'] ?>').click();" />
+    onclick="document.getElementById('image_url_<?= $id ?>').click();" />
 </div>
