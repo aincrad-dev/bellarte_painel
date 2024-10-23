@@ -1,4 +1,4 @@
-<form action="/?c=revestimento&t=atualizar" class="revestimento" method="POST" enctype="multipart/form-data">
+<form action="./?c=revestimento&t=atualizar" class="revestimento" method="POST" enctype="multipart/form-data">
   <div>
     <input type="text" name="id" value="<?= $id ?>" hidden />
     <div>
@@ -29,12 +29,12 @@
   <div>
     <button type="submit" class="btn cadastrar">
       Gravar
-      <img src="/public/icon_check.svg" height="26px" />
+      <img src="./public/icon_check.svg" height="26px" />
     </button>
 
-    <a href="/?c=revestimento&t=excluir&id=<?=$id?>">
+    <a href="./?c=revestimento&t=excluir&id=<?=$id?>">
       <button type="button" class="btn excluir" >
-        <img src="/public/trash-solid.svg" height="26px" />
+        <img src="./public/trash-solid.svg" height="26px" />
       </button>
     </a>
   </div>

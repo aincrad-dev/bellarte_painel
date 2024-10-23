@@ -3,7 +3,7 @@
 <div id="form-container"></div>
 <button type="button" class="btn adcionar" id="btn-form-upholstery">
   Adicionar
-  <img src="/public/add_icon.svg" height="26px" />
+  <img src="./public/add_icon.svg" height="26px" />
 </button>
 
 <script>
@@ -45,7 +45,7 @@
       <div>
         <button type="submit" class="btn cadastrar">
           Gravar
-          <img src="/public/icon_check.svg" height="26px" />
+          <img src="./public/icon_check.svg" height="26px" />
         </button>
       </div>
 

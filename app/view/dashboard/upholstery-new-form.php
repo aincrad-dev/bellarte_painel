@@ -4,7 +4,7 @@ $t = "";
 <div id="form-container"></div>
 <button type="button" class="btn adcionar" id="btn-form-upholstery">
   Adicionar
-  <img src="/public/add_icon.svg" height="26px" />
+  <img src="./public/add_icon.svg" height="26px" />
 </button>
 
 <script>
@@ -12,7 +12,7 @@ $t = "";
     let randomId = Math.random().toString(36).substr(2, 9);
     let newForm = document.createElement('div')
     newForm.innerHTML = `
-      <form action="/?c=revestimento&t=cadastrar" class="revestimento" method="POST" enctype="multipart/form-data">
+      <form action="./?c=revestimento&t=cadastrar" class="revestimento" method="POST" enctype="multipart/form-data">
         <div>
           <div>
             <label for="reference_code">Cód:</label>
@@ -47,7 +47,7 @@ $t = "";
               id="image_preview_${randomId}"
               class="image_preview"
               style="display: none"
-              src="<?= $upholstery['image_url'] ?>"
+              src=""
               alt="Pré-visualização"
               onclick="document.getElementById('image_url_${randomId}').click();" />
           </div>
@@ -56,7 +56,7 @@ $t = "";
         <div>
           <button type="submit" class="btn cadastrar">
             Gravar
-            <img src="/public/icon_check.svg" height="26px" />
+            <img src="./public/icon_check.svg" height="26px" />
           </button>
         </div>
 
