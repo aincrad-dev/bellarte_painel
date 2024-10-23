@@ -6,6 +6,7 @@
   $rotas_dashboard = [
     'produto' => 'app/view/dashboard/product.php',
     'revestimento' => 'app/view/dashboard/upholstery.php',
+    'acabamento' => 'app/view/dashboard/trim.php',
     '404' => 'app/view/404.php'
   ];
 
@@ -34,6 +35,9 @@
       </li>
       <li>
         <a href="./?c=revestimento">Revestimento</a>
+      </li>
+      <li>
+        <a href="./?c=acabamento">Acabamento</a>
       </li>
     </ul>
   </aside>
