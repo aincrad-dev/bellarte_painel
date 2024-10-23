@@ -19,7 +19,7 @@ if ($order == "acabamento") {
         $image = $_FILES['image_url'];
         $imageExtension = pathinfo($image['name'], PATHINFO_EXTENSION);
         $imageName = $uuid . '.' . $imageExtension;
-        $uploadDir = 'public/upholsteries/';
+        $uploadDir = 'public/trims/';
         $imagePath = $uploadDir . $imageName;
 
         // Certifique-se de que o diretório existe
@@ -29,7 +29,7 @@ if ($order == "acabamento") {
 
         // Mova o arquivo enviado para o diretório de destino
         if (move_uploaded_file($image['tmp_name'], $imagePath)) {
-          $imageUrl = '/public/upholsteries/' . $imageName;
+          $imageUrl = '/public/trims/' . $imageName;
         } else {
           echo "<script>showToast('Falha ao fazer upload da imagem!', 'error'); </script>";
         }
