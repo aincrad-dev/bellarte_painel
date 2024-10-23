@@ -169,7 +169,7 @@ $upholsteries = $stmt->fetchAll();
 
 <?php 
   $id = $upholstery['id'];
-  $image_url =  $upholstery['image_url'];
+  $image_url =  str_replace("storage", "public", $upholstery['image_url']);
   include('./app/view/dashboard/upholstery-list-form.php')  
 ?>
 

@@ -100,7 +100,7 @@ $trims = $stmt->fetchAll();
 <?php
 foreach ($trims as $trim) {
   $id = $trim['id'];
-  $image_url = $trim['image_url'];
+  $image_url = str_replace("storage", "public", $trim['image_url']);
   include('app/view/dashboard/trim-list-form.php');
 }
 include_once('app/view/dashboard/trim-new-form.php');
