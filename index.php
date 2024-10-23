@@ -4,6 +4,7 @@ session_start();
 define('CONTROL', true);
 
 require_once 'app/config/routes.php';
+require_once 'app/config/load_env.php';
 
 
 function guidv4($data = null)
