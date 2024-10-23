@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		<a href="./?p=signup">Cadastrar-se</a>
 	</div>
 
-	<?php if ($erro): ?>
+	<?php if (isset($erro)): ?>
 		<script>showToast(<?= $erro ?>, '') </script>"
 	<?php endif; ?>
 </form>
