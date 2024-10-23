@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if ($_POST['password'] != $_POST['confirm-password']) {
     $erro = 'Senhas não conferem';
+    echo "<script>showToast(`$erro`, 'error'); </script>";
   }
 
   if (empty($erro)) {
@@ -27,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result['count'] > 0) {
       $erro = 'Usuário ou email já cadastrado';
+      echo "<script>showToast(`$erro`, 'error'); </script>";
     }
 
     if (empty($erro)) {
@@ -43,8 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: ./');
         exit();
       } else {
-
-        $erro = 'Erro ao cadastrar usuário';
+        $erro = "Erro ao cadastrar usuário";
+        echo "<script>showToast(`$erro`, 'error'); </script>";
+        $erro = null;
       }
     }
   }
@@ -86,12 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="password" name="confirm-password" id="confirm-password">
   </div>
   <div>
-    <button type="submit">Cadastrar</button>
+    <button type="submit" class="btn cadastrar">Cadastrar</button>
+    <a href="./">Voltar</a>
   </div>
-  
-
-  <?php if ($erro): ?>
-    <script>showToast(<?= $erro ?>, '') </script>"
-  <?php endif; ?>
 
 </form>

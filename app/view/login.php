@@ -12,6 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if (empty($username) || empty($password)) {
 		$error = 'Usuário e senha são obrigatório';
+		echo "<script>showToast(`$error`, 'error'); </script>";
+		$error = null;
 	} else {
 		// Query the users table to check the username and password
 		$stmt = $pdo->prepare('SELECT * FROM users WHERE name = :username');
@@ -33,8 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			header('Location:./?p=dashboard');
 			exit();
 		} else {
-			echo 'passou pela senha';
+			echo "Erro de login<br/>\n";
 			$error = 'Usuário ou senha inválidos';
+			echo "<script>showToast(`$error`, 'error'); </script>";
+			$error = null;
 		}
 	}
 }
@@ -56,8 +60,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		<button type="submit">Entrar</button>
 		<a href="./?p=signup">Cadastrar-se</a>
 	</div>
-
-	<?php if (isset($erro)): ?>
-		<script>showToast(<?= $erro ?>, '') </script>"
-	<?php endif; ?>
 </form>
