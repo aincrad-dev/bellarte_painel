@@ -56,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = null;
 }
 
+ob_end_flush();
 
 ?>
 
