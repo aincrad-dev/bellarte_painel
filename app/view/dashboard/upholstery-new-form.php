@@ -8,10 +8,10 @@ $t = "";
 </button>
 
 <script>
-  document.querySelector('#btn-form-upholstery').addEventListener('click', () => {
+  document.querySelector('button.btn.adcionar').addEventListener('click', () => {
     let randomId = Math.random().toString(36).substr(2, 9);
-    let newFormUpholstery = document.createElement('div')
-    newFormUpholstery.innerHTML = `
+    let newForm = document.createElement('div')
+    newForm.innerHTML = `
       <form action="/?c=revestimento&t=cadastrar" class="revestimento" method="POST" enctype="multipart/form-data">
         <div>
           <div>
@@ -62,8 +62,8 @@ $t = "";
 
       </form>`
 
-    document.getElementById('form-container').appendChild(newFormUpholstery)
-    newFormUpholstery.scrollIntoView({
+    document.getElementById('form-container').appendChild(newForm)
+    newForm.scrollIntoView({
       behavior: 'smooth'
     })
   })

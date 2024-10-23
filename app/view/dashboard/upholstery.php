@@ -167,7 +167,11 @@ $upholsteries = $stmt->fetchAll();
 
 <?php foreach ($upholsteries as $upholstery):  ?>
 
-<?php include('./app/view/dashboard/upholstery-list-form.php')  ?>
+<?php 
+  $id = $upholstery['id'];
+  $image_url =  $upholstery['image_url'];
+  include('./app/view/dashboard/upholstery-list-form.php')  
+?>
 
 <?php endforeach; ?>
 
