@@ -22,9 +22,11 @@
       Gravar
       <img src="./public/icon_check.svg" height="26px" />
     </button>
-    <button type="button" class="btn excluir">
-      <img src="./public/trash-solid.svg" height="26px" />
-    </button>
+    <a href="./?c=acabamento&t=excluir&id=<?= $id ?>">
+      <button type="button" class="btn excluir">
+        <img src="./public/trash-solid.svg" height="26px" />
+      </button>
+    </a>
   </div>
 
 </form>

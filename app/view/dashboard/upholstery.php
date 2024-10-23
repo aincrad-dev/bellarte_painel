@@ -130,14 +130,14 @@ if ($order == "revestimento") {
 
     } 
   } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && $type_order == "excluir")  {
-    $id = $_GET['id'];
-    $sql = "UPDATE upholsteries SET 
+    $uuid = $_GET['id'];
+    $sql = "UPDATE trims SET 
               deleted_at = now(),
               delete_by = :user_id
             WHERE id = :id";
     try {
       $stmt = $pdo->prepare($sql);
-      $stmt->execute(['id' => $id, ':user_id' => $user_id]);
+      $stmt->execute([':id' => $uuid, ':user_id' => $user_id]);
       if ($stmt->rowCount() > 0 ) {
         echo "<script>showToast('Revestimento excluído com sucesso!', 'success')</script>";
       }  else {

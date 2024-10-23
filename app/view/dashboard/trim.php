@@ -11,7 +11,7 @@ if ($order == "acabamento") {
       $type = $_POST['type'];
       $reference_code = $_POST['reference_code'] ?? null;
       if ($reference_code === '') {
-          $reference_code = null;
+        $reference_code = null;
       }
 
       // Processe o upload da imagem
@@ -60,7 +60,6 @@ if ($order == "acabamento") {
           echo "<script>showToast(`$tempMessage`, 'error'); </script>";
           $tempMessage = null;
         }
-
       } elseif ($type_order == "atualizar") {
         $sql = "UPDATE trims SET 
                   name = :name, 
@@ -79,15 +78,35 @@ if ($order == "acabamento") {
             ':reference_code' => $reference_code,
             ':image_url' => $imageUrl,
             ':user_id' => $user_id
-            ]);
-            
-            echo "<script>showToast('Acabamento atualizado com sucesso!', 'success'); </script>";
+          ]);
+
+          echo "<script>showToast('Acabamento atualizado com sucesso!', 'success'); </script>";
         } catch (PDOException $e) {
           $tempMessage = "Erro ao atualizar acabamento: \n<br/>" . $e->getMessage();
           echo "<script>showToast(`$tempMessage`, 'error'); </script>";
           $tempMessage = null;
         }
       }
+    }
+  } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && $type_order == 'excluir') {
+    $uuid = $_GET['id'];
+    $sql  = "UPDATE trims SET 
+              deleted_at =  now(),
+              delete_by = :user_id
+            WHERE id = :id";
+    try {
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([':id' => $uuid, ':user_id' => $user_id]);
+
+      if ($stmt->rowCount()  > 0) {
+        echo "<script>showToast('Acabamento excluído com sucesso!', 'success');</script>";
+      } else {
+        echo "<script>showToast('Erro ao excluir, nenhuma linha alterada!', 'error');</script>";
+      }
+    } catch (PDOException $e) {
+      $tempMessage = "Erro ao excluir acabamento: \n<br/>" . $e->getMessage();
+      echo "<script>showToast(`$tempMessage`, 'error');</script>";
+      $tempMessage = null;
     }
   }
 }
