@@ -4,6 +4,7 @@
   $order = $_GET['c']  ?? 'revestimento';
 
   $rotas_dashboard = [
+    'empresa' => 'app/view/dashboard/company.php',
     'produto' => 'app/view/dashboard/product.php',
     'revestimento' => 'app/view/dashboard/upholstery.php',
     'acabamento' => 'app/view/dashboard/trim.php',
@@ -30,6 +31,9 @@
     </div>
     
     <ul>
+      <li>
+        <a href="./?c=empresa">Empresas</a>
+      </li>
       <li>
         <a href="./?c=produto">Produto</a>
       </li>
