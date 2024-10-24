@@ -24,6 +24,8 @@ $t = "";
           </div>
         </div>
         <div>
+          <label for="color">Cor:</label>
+          <input type="text" id="color" name="color" />
           <label for="composition">Composição:</label>
           <input type="text" id="composition" name="composition" value="<?= $t; ?>" required />
         </div>

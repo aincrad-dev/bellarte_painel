@@ -10,6 +10,7 @@ if ($order == "revestimento") {
     if ($type_order == "cadastrar" || $type_order == "atualizar") {
       $reference_code  = $_POST['reference_code'];
       $type  = $_POST['type'];
+      $color = $_POST['color'];
       $composition = $_POST['composition'];
       $differentials = $_POST['differentials'] ?? null;
       $color_pallete =  $_POST['color_pallete'];
@@ -52,6 +53,7 @@ if ($order == "revestimento") {
         $sql = "UPDATE upholsteries SET 
                   reference_code = :reference_code, 
                   type = :type,
+                  color = :color,
                   composition = :composition, 
                   differentials = :differentials, 
                   color_pallete = :color_pallete, 
@@ -65,6 +67,7 @@ if ($order == "revestimento") {
             'id' => $uuid,
             ':reference_code' => $reference_code,
             ':type' => $type,
+            ':color' => $color,
             ':composition' => $composition,
             ':differentials' => $differentials,
             ':color_pallete' => $color_pallete,
@@ -89,6 +92,7 @@ if ($order == "revestimento") {
                     id, 
                     reference_code, 
                     type, 
+                    color,
                     composition, 
                     differentials, 
                     color_pallete, 
@@ -100,6 +104,7 @@ if ($order == "revestimento") {
                     :id, 
                     :reference_code, 
                     :type, 
+                    :color,
                     :composition, 
                     :differentials, 
                     :color_pallete, 
@@ -113,6 +118,7 @@ if ($order == "revestimento") {
             'id' => $uuid,
             ':reference_code' => $reference_code,
             ':type' => $type,
+            ':color' => $color,
             ':composition' => $composition,
             ':differentials' => $differentials,
             ':color_pallete' => $color_pallete,
