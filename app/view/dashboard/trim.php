@@ -115,7 +115,7 @@ if ($order == "acabamento") {
   }
 }
 
-$sql =  "SELECT * FROM trims WHERE deleted_at is NULL ";
+$sql =  "SELECT * FROM trims WHERE deleted_at is NULL ORDER BY name ASC";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $trims = $stmt->fetchAll();

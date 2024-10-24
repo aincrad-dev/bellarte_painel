@@ -161,7 +161,7 @@ if ($order == "revestimento") {
   }
 }
 
-$sql =  "SELECT * FROM upholsteries WHERE deleted_at is NULL ";
+$sql =  "SELECT * FROM upholsteries WHERE deleted_at is NULL ORDER BY reference_code ASC";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $upholsteries = $stmt->fetchAll();
