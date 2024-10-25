@@ -127,3 +127,37 @@ form.revestimento input, form.acabamento input {
   margin: auto;
 
 }
+
+.collapse {
+	height: 0px;
+	overflow: hidden;
+	transition: height 0.8s;
+}
+
+h4:active + .collapse {
+	height: 200px;
+}
+
+#search-bar {
+  background-color: rgba(0, 0, 0, 0.04);
+  display: flex;
+  padding: 0 2rem;
+  align-items: center;
+  flex: 1;
+  border-radius: .5rem;
+}
+#search-bar:focus-within {
+  outline: 2px solid blue;
+}
+
+#search-bar input {
+  outline-style: none;
+  background-color: transparent;
+  flex: 1;
+}
+
+
+
+#search-bar img {
+  filter: grayscale(100%) brightness(0) invert(70%);
+}

@@ -28,3 +28,34 @@ function previewImage(event, id) {
     document.getElementById('image_url_' + id).style.display = 'block'; // Mostra o input se não houver imagem
   }
 }
+
+
+function filterForms() {
+  // Valor do campo de busca
+  const searchTerm = document.getElementById('searchField').value.toLowerCase();
+  
+  // Selecionar todos os formulários dentro do main
+  const forms = document.querySelectorAll('main form');
+  console.log(searchTerm);
+  
+  forms.forEach(form => {
+    // Selecionar todos os inputs de cada formulário
+    const inputs = form.querySelectorAll('input[type="text"]');
+
+    let match = false;
+
+    // Verificar se algum valor do input contém o termo de busca
+    inputs.forEach(input => {
+      if (input.value.toLowerCase().includes(searchTerm)) {
+        match = true;
+      }
+    });
+
+    // Mostrar ou ocultar o formulário baseado na correspondência
+    if (match) {
+      form.style.display = '';
+    } else {
+      form.style.display = 'none';
+    }
+  });
+}

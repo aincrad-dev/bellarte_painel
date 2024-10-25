@@ -123,6 +123,8 @@ $trims = $stmt->fetchAll();
 
 <h2>Cadastro de acabamentos</h2>
 
+<?php include_once('app/view/dashboard/components/search_form.php'); ?>
+
 <?php
 foreach ($trims as $trim) {
   $id = $trim['id'];

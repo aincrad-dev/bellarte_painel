@@ -171,7 +171,7 @@ $upholsteries = $stmt->fetchAll();
 
 <h2>CADASTRO DE REVESTIMENTO</h2>
 
-
+<?php include_once('app/view/dashboard/components/search_form.php'); ?>
 
 <?php foreach ($upholsteries as $upholstery):  ?>
 
@@ -183,6 +183,4 @@ $upholsteries = $stmt->fetchAll();
 
 <?php endforeach; ?>
 
-<?php include('app/view/dashboard/upholstery-new-form.php') ?>
-
-
+<?php include('app/view/dashboard/upholstery-new-form.php'); ?>
