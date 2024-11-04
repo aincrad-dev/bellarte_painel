@@ -29,6 +29,10 @@ body {
   background-color: #88c946;
 }
 
+.btn.editar {
+  background-color: #ffed78;
+}
+
 .btn.excluir {
   background-color: #ef373f;
 }

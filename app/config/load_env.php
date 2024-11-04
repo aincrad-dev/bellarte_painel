@@ -1,5 +1,8 @@
 <?php
-function loadEnv($file = '.env') {
+function loadEnv(/* $file = '.env' */)
+{
+    //$file = '/.env';
+    $file = dirname(__DIR__) . '/../.env';
     $env = [];
     $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {

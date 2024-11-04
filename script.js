@@ -33,11 +33,11 @@ function previewImage(event, id) {
 function filterForms() {
   // Valor do campo de busca
   const searchTerm = document.getElementById('searchField').value.toLowerCase();
-  
+
   // Selecionar todos os formulários dentro do main
   const forms = document.querySelectorAll('main form');
   console.log(searchTerm);
-  
+
   forms.forEach(form => {
     // Selecionar todos os inputs de cada formulário
     const inputs = form.querySelectorAll('input[type="text"]');
@@ -59,3 +59,32 @@ function filterForms() {
     }
   });
 }
+
+async function setCompanyToProduct(product_id, company_id, value, user_id) {
+  console.log(product_id, company_id, value, user_id);
+  try {
+    const url = `/api/product/${product_id}/company/${company_id}`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify({ 'status': value, user_id })
+
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Erro na requisição:', errorData.message || 'Erro desconhecido');
+      return;
+    }
+
+    const data = await response.json();
+    console.log('Sucesso:', data.message || 'Ação concluída com sucesso');
+
+  } catch (error) {
+    console.error('Erro na requisição:', error);
+  }
+}
+
