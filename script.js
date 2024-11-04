@@ -70,7 +70,7 @@ async function setCompanyToProduct(product_id, company_id, value, user_id) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
-      body: JSON.stringify({ 'status': value, user_id })
+      body: JSON.stringify({ 'status': value, 'user_id': user_id })
 
     });
 
@@ -80,10 +80,13 @@ async function setCompanyToProduct(product_id, company_id, value, user_id) {
       return;
     }
 
-    const data = await response.json();
+    const data = response.json();
     console.log('Sucesso:', data.message || 'Ação concluída com sucesso');
+    showToast(data.message ?? 'Ação concluída com sucesso', 'success')
 
   } catch (error) {
+    const tempMessage = "Erro ao excluir revestimento: \n<br/>" + error.message;
+    showToast(tempMessage, 'error')
     console.error('Erro na requisição:', error);
   }
 }

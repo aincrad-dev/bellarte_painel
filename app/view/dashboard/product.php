@@ -60,7 +60,7 @@ function getCompanies(PDO $pdo): array
 
 function getProductOnCompany(PDO $pdo, String $productId): array
 {
-  $sql = "SELECT * FROM company_product WHERE deleted_at IS NULL and product_id  = :product_id";
+  $sql = "SELECT id, company_id FROM company_product WHERE deleted_at IS NULL and product_id  = :product_id";
   try {
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':product_id', $productId);
@@ -92,27 +92,33 @@ $products = getProducts($pdo);
       <input type="text" name="name" value="<?= $product['name'] ?>" />
     </div>
   </form>
+
+  <!-- Iniciando o cadastro das empresas -->
   <form class="companies">
     <?php
     $companies_product =  getProductOnCompany($pdo, $product['id']);
-    var_dump($companies_product);
+
     foreach (getCompanies($pdo)['data'] as $company) {
       $is_company_product = false;
-      if (in_array($company['id'], $companies_product['data'])) {
+      if (in_array($company['id'], $companies_product['data'][0])) {
         $is_company_product = true;
-        echo '1';
       }
     ?>
       <label for="check_<?= $company['id'] . "_" . $product['id'] ?>">
         <?= $company['name'] ?>
       </label>
       <input
-        class="btn"
+        class="btn hidden"
         id="check_<?= $company['id'] . "_" . $product['id'] ?>"
         type="checkbox"
         name="check_<?= $company['name'] ?>"
         <?= $is_company_product ? 'checked' : '' ?>
-        onclick="setCompanyToProduct('<?= $product['id'] ?>', '<?= $company['id'] ?>', this.checked)" />
+        onclick="setCompanyToProduct(
+          '<?= $product['id'] ?>', 
+          '<?= $company['id'] ?>', 
+          this.checked,
+          '<?= $logged_in_user ?>'
+          )" />
     <?php
     }
     ?>

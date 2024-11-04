@@ -1,8 +1,10 @@
 <?php
 ob_start();
-header(
-  'Content-Type: application/json'
-);
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+
 session_start();
 define('CONTROL', true);
 require_once("../app/config/load_env.php");
@@ -26,11 +28,17 @@ if (count($parts) < 2) {
 } else {
   switch ($parts[1]) {
     case 'product':
-      include_once("api/companies.php");
+      include_once("../api/controllers/ProductController.php");
       break;
 
     default:
-      # code...
+      $data = [
+        'version' => '2.0',
+        'message' => 'Rota ainda não implementada',
+        'data' => [
+          'request' =>  $parts,
+        ]
+      ];
       break;
   }
 }
