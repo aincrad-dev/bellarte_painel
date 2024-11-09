@@ -1,0 +1,11 @@
+{
+  "name": "bellar-painel",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./tailwind-styles.css -o ./output.css",
+    "tailwind:watch": "npx tailwindcss -i ./tailwind-styles.css -o ./output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
+  }
+}

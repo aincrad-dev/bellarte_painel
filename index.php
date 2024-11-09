@@ -38,6 +38,8 @@ if (empty($logged_in_user)) {
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./style.css">
+  <!-- Estilos do Tailwind -->
+  <link rel="stylesheet" href="./output.css">
 
   <script src="./preload.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
