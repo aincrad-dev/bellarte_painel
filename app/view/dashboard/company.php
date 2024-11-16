@@ -76,6 +76,7 @@ $sql = "SELECT `id`, `name` FROM `companies` WHERE deleted_at is NULL ORDER BY `
 $stmt =  $pdo->prepare($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
+var_dump($companies);
 ?>
 
 <h2>Cadastro de empresas</h2>
@@ -105,7 +106,7 @@ $companies = $stmt->fetchAll();
 
       <a href="./?c=empresa&t=excluir&id=<?= $company['id'] ?>">
         <button type="button" class="btn excluir">
-          <img src="./public/trash-solid.svg" height="26px" />
+          <img src="./public/trash-solid.svg" width="32px" height="26px" />
         </button>
       </a>
     </div>
