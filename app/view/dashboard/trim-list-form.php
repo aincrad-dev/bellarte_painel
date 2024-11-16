@@ -1,7 +1,7 @@
-<form 
-  action="./?c=acabamento&t=atualizar" 
-  class="acabamento" 
-  method="POST" 
+<form
+  action="./?c=acabamento&t=atualizar"
+  class="acabamento"
+  method="POST"
   enctype="multipart/form-data">
   <div>
     <input type="hidden" name="id" value="<?= $id ?>">
@@ -10,11 +10,11 @@
     <label for="">Tipo:</label>
     <input type="text" name="type" value="<?= $trim['type'] ?>" required />
     <label for="">Cód:</label>
-    <input type="text" name="reference_code" value="<?= $trim['reference_code'] ?>"/>
+    <input type="text" name="reference_code" value="<?= $trim['reference_code'] ?>" />
   </div>
   <div>
     <?php
-      include('app/view/dashboard/components/input-file.php');
+    include('app/view/dashboard/components/input-file.php');
     ?>
   </div>
   <div>
@@ -24,7 +24,7 @@
     </button>
     <a href="./?c=acabamento&t=excluir&id=<?= $id ?>">
       <button type="button" class="btn excluir">
-        <img src="./public/trash-solid.svg" height="26px" />
+        <img src="./public/trash-solid.svg" width="32px" height="26px" />
       </button>
     </a>
   </div>
