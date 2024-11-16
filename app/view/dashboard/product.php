@@ -41,7 +41,7 @@ function getProducts(PDO $pdo): array
 
 function getCompanies(PDO $pdo): array
 {
-  $sql = "SELECT * FROM companies WHERE deleted_at IS NULL ORDER BY name";
+  $sql = "SELECT id, name FROM companies WHERE deleted_at IS NULL ORDER BY name";
   try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -60,7 +60,7 @@ function getCompanies(PDO $pdo): array
 
 function getProductOnCompany(PDO $pdo, String $productId): array
 {
-  $sql = "SELECT id, company_id FROM company_product WHERE deleted_at IS NULL and product_id  = :product_id";
+  $sql = "SELECT company_id FROM company_product WHERE deleted_at IS NULL and product_id = :product_id";
   try {
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':product_id', $productId);
@@ -97,18 +97,20 @@ $products = getProducts($pdo);
   <form class="companies">
     <?php
     $companies_product =  getProductOnCompany($pdo, $product['id']);
-
+    //var_dump($companies_product['data']);
+    //die();
     foreach (getCompanies($pdo)['data'] as $company) {
+      echo "<br/>" . var_dump($company) . "<br/>";
       $is_company_product = false;
-      if (in_array($company['id'], $companies_product['data'][0])) {
+      if (in_array($company['id'], $companies_product['data'])) {
         $is_company_product = true;
       }
     ?>
       <label for="check_<?= $company['id'] . "_" . $product['id'] ?>">
-        <?= $company['name'] ?>
+        <?= $company['name'] . '-' . $is_company_product . '-' . $company['id'] ?>
       </label>
       <input
-        class="btn hidden"
+        class="btn"
         id="check_<?= $company['id'] . "_" . $product['id'] ?>"
         type="checkbox"
         name="check_<?= $company['name'] ?>"
@@ -119,9 +121,7 @@ $products = getProducts($pdo);
           this.checked,
           '<?= $logged_in_user ?>'
           )" />
-    <?php
-    }
-    ?>
+    <?php } ?>
   </form>
 
   <div>
