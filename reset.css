@@ -54,7 +54,7 @@ input {
     /* border: 1px  solid #c0c0c03b; */
     border: none;
     background-color: rgba(0, 0, 0, 0.04);
-    padding: 0.25rem 0.5rem;    
+    padding: 0.25rem 0.25rem;    
 }
 
 input:hover {

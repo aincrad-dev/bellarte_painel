@@ -84,8 +84,80 @@ $products = getProducts($pdo);
 ?>
 
 <h2>Cadastro de produto</h2>
+
+<form action="" class="flex flex-col gap-2">
+  <div class="flex gap-3">
+    <label for="name" class="my-auto">Nome:</label>
+    <input type="text" name="name" id="name" class="flex-1 px-2 py-1 rounded-md" />
+  </div>
+
+  <!-- Seletor das empresas -->
+  <div class="my-3 gap-4 flex flex-col">
+    <h3>Empresas</h3>
+    <div class="flex gap-3">
+      <?php
+      $companies = getCompanies($pdo);
+      // var_dump($companies);
+      foreach ($companies["data"] as $company) :
+      ?>
+        <div class="btn-checked">
+          <input
+            type="checkbox"
+            name="new-product-company-<?= $company["id"] ?>"
+            id="new-product-company-<?= $company["id"] ?>"
+            class="peer" />
+          <label
+            for="new-product-company-<?= $company["id"] ?>"
+            class="peer-checked:bg-sprout-300">
+            <?= $company["name"] ?>
+          </label>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
+  <!-- Cadastro de acabamentos "nomes" -->
+  <p>Onde se aplica os acabamentos:</p>
+  <div class="flex flex-col w-full gap-4">
+    <div class="flex flex-row gap-2">
+      <label for="f_name01" class="m-auto">01</label>
+      <input type="text" name="f_name01" id="f_name01" class="flex-1 px-5" />
+      <button class="btn editar svgblack" type="button">
+        <img alt="Editar" width="24" src="./public/edit.svg" class="">
+      </button>
+      <button class="btn excluir" type="button">
+        <img alt="Excluir" width="24" src="./public/trash-solid.svg">
+      </button>
+    </div>
+
+    <div class="flex flex-row h-8 gap-4">
+      <button class="btn cadastrar" type="button">
+        Gravar
+        <img src="./public/icon_check.svg" alt="Icone check">
+      </button>
+      <button class="btn adcionar" type="button">
+        Adcionar
+        <img src="./public/add_icon.svg" alt="Icone editar">
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Cadastro revestimento -->
+  <details open>
+    <summary>Titulo</summary>
+    <div>
+      <div>
+
+      </div>
+
+    </div>
+  </details>
+</form>
+
+
 <?php foreach ($products['data'] as $product): ?>
-  <form id="<?= $product['id'] ?>" class="revestimento">
+  <form id="<?= $product['id'] ?>">
     <div>
       <input type="hidden" name="id" value="<?= $product['id'] ?>">
       <label for="name">Nome:</label>
@@ -93,12 +165,15 @@ $products = getProducts($pdo);
     </div>
   </form>
 
+
   <!-- Iniciando o cadastro das empresas -->
+
   <form class="companies">
+    <a href="#">a</a>
     <?php
     $companies_product =  getProductOnCompany($pdo, $product['id']);
-    //var_dump($companies_product['data']);
-    //die();
+    var_dump($companies_product['data']);
+    die();
     foreach (getCompanies($pdo)['data'] as $company) {
       echo "<br/>" . var_dump($company) . "<br/>";
       $is_company_product = false;
@@ -157,7 +232,8 @@ $products = getProducts($pdo);
           <label for="">Nome:</label>
           <input type="text" name="name" required />
         </div>
-        <div class="acabamentos">
+        <!-- Local de cadastro para acabamento (Trim) -->
+        <div class="">
           <span>Aonde se aplicam os acabamentos:</span>
           <div>
             <label for="">01</label>
@@ -210,14 +286,14 @@ $products = getProducts($pdo);
           newForm.style = "display: flex; flex-direction: row; width: 100%; gap: 16px;"
           newForm.id = `form-finishing-${randomUUID}`;
           newForm.innerHTML = `
-<div>
-<input type="hidden" name="id"  value="${randomUUID}" />
-<label for="name" style="margin: auto;">${++listFinishingLocation.childElementCount}</label>
-<input type="text" name="name" style="flex: 1;" />
-<button type="button" class="btn editar">Editar</button>
-<button type="button" class="btn excluir">Excluir</button>
-</div>
-`
+          <div>
+          <input type="hidden" name="id"  value="${randomUUID}" />
+          <label for="name" style="margin: auto;">${++listFinishingLocation.childElementCount}</label>
+          <input type="text" name="name" style="flex: 1;" />
+          <button type="button" class="btn editar">Editar</button>
+          <button type="button" class="btn excluir">Excluir</button>
+          </div>
+          `
           listFinishingLocation.appendChild(newForm)
           newForm.scrollIntoView({
             behavior: 'smooth',

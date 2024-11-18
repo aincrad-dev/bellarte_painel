@@ -9,14 +9,15 @@ body {
 .btn {
   font-size: 1.2rem;
   text-transform: uppercase;
-  border-radius: 16px;
+  border-radius: 12px;
   border: none;
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   color: #fafafa;
+  width: inherit;
 }
 
 .btn:hover {
@@ -39,8 +40,6 @@ body {
 
 .btn.adcionar {
   background-color: #69d7f1;
-  width: inherit;
-  margin: 2rem 0;
 }
 
 .btn>img {
@@ -109,14 +108,16 @@ div#dashboard>main>h2 {
 
 }
 
-form.revestimento, form.acabamento {
+form.revestimento,
+form.acabamento {
   margin: 1.5rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-form.revestimento div, form.acabamento div {
+form.revestimento div,
+form.acabamento div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -125,7 +126,8 @@ form.revestimento div, form.acabamento div {
   gap: 1rem;
 }
 
-form.revestimento input, form.acabamento input {
+form.revestimento input,
+form.acabamento input {
   flex-grow: 1;
   padding: .4rem;
   margin: auto;
@@ -133,13 +135,13 @@ form.revestimento input, form.acabamento input {
 }
 
 .collapse {
-	height: 0px;
-	overflow: hidden;
-	transition: height 0.8s;
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.8s;
 }
 
-h4:active + .collapse {
-	height: 200px;
+h4:active+.collapse {
+  height: 200px;
 }
 
 #search-bar {
@@ -150,6 +152,7 @@ h4:active + .collapse {
   flex: 1;
   border-radius: .5rem;
 }
+
 #search-bar:focus-within {
   outline: 2px solid blue;
 }

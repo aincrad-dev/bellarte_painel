@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.svgblack {
+  & img {
+    @apply invert-0 brightness-100;
+  }
+}
+
+.btn-checked {
+
+  & input {
+    @apply hidden;
+  }
+
+  & label {
+    @apply bg-black-haze-200 px-2 py-1 rounded-md transition-colors duration-100;
+  }
+}
+
+label,
+h1,
+h2,
+p,
+span {
+  @apply select-none;
+}
+
+summary {
+  @apply list-none appearance-none flex items-center cursor-pointer bg-black/5 w-full justify-center rounded-md px-1;
+
+  &::after {
+    content: ">";
+    @apply ml-2 transition-transform;
+  }
+
+
+}
+
+/* Regra separada para quando o <details> estiver aberto */
+details[open] summary::after {
+  @apply rotate-90;
+}

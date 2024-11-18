@@ -76,7 +76,6 @@ $sql = "SELECT `id`, `name` FROM `companies` WHERE deleted_at is NULL ORDER BY `
 $stmt =  $pdo->prepare($sql);
 $stmt->execute();
 $companies = $stmt->fetchAll();
-var_dump($companies);
 ?>
 
 <h2>Cadastro de empresas</h2>
