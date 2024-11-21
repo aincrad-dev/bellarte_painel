@@ -7,6 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'black': {
+          '39': 'rgba(0, 0, 0, 0.039)',
+        },
         'black-haze': {
           '50': '#f5f6f6',
           '100': '#eef0f0',

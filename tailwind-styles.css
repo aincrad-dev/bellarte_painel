@@ -16,7 +16,19 @@
   }
 
   & label {
-    @apply bg-black-haze-200 px-2 py-1 rounded-md transition-colors duration-100;
+    @apply bg-black-haze-200 px-2 py-1 rounded-md transition-colors duration-100 flex flex-col;
+  }
+}
+
+.btn-checked-guide {
+  @apply flex flex-1;
+
+  & input {
+    @apply hidden;
+  }
+
+  & label {
+    @apply px-2 py-1 rounded-t-md transition-colors duration-100 flex-1;
   }
 }
 
@@ -29,7 +41,7 @@ span {
 }
 
 summary {
-  @apply list-none appearance-none flex items-center cursor-pointer bg-black/5 w-full justify-center rounded-md px-1;
+  @apply list-none appearance-none flex items-center cursor-pointer bg-black-39 w-full justify-center rounded-md px-1;
 
   &::after {
     content: ">";

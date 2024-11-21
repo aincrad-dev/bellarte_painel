@@ -78,10 +78,83 @@ function getProductOnCompany(PDO $pdo, String $productId): array
   }
 }
 
+function getUpholsteryColorPallete(PDO $pdo)
+{
+  $sql = "SELECT color_pallete FROM upholsteries WHERE deleted_at IS NULL GROUP BY color_pallete ORDER BY color_pallete;";
+  try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return [
+      'status' => 'success',
+      'data' =>  $stmt->fetchAll(),
+    ];
+  } catch (PDOException $e) {
+    return [
+      'status' => 'error',
+      'message' => "Erro: " . $e->getMessage(),
+      'data' => [],
+    ];
+  }
+}
+
+function getUpholsteriesByColorPallete(PDO $pdo, String $color_pallete)
+{
+  $sql = "SELECT id, type, image_url FROM upholsteries WHERE deleted_at IS NULL AND color_pallete = :color_pallete ORDER BY type;";
+  try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':color_pallete', $color_pallete);
+    $stmt->execute();
+    return [
+      'status' => 'success',
+      'data' =>  $stmt->fetchAll(),
+    ];
+  } catch (PDOException $e) {
+    return [
+      'status' => 'error',
+      'message' => "Erro: " . $e->getMessage(),
+      'data' => [],
+    ];
+  }
+}
+
+function getUpholsteries(PDO $pdo)
+{
+  $sql = "SELECT id, type, image_url FROM upholsteries WHERE deleted_at IS NULL ORDER BY type;";
+  try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    return [
+      'status' => 'success',
+      'data' =>  $stmt->fetchAll(),
+    ];
+  } catch (PDOException $e) {
+    return [
+      'status' => 'error',
+      'message' => "Erro: " . $e->getMessage(),
+      'data' => [],
+    ];
+  }
+}
+
 $products = getProducts($pdo);
+$upholsteriesColorPallete = getUpholsteryColorPallete($pdo);
+$upholsteriesByPallete = getUpholsteriesByColorPallete($pdo, "a");
+$upholsteries = getUpholsteries($pdo);
 
 
 ?>
+
+<script>
+  let upholsteries = []
+  // Verifica se a consulta foi bem-sucedida no PHP
+  <?php if ($upholsteries['status'] === 'success'): ?>
+    // Passa os dados da consulta para uma variável JavaScript
+    upholsteries = <?php echo json_encode($upholsteries['data']); ?>;
+  <?php else: ?>
+    // Em caso de erro, define uma variável vazia ou mostra a mensagem de erro
+    upholsteries = [];
+  <?php endif; ?>
+</script>
 
 <h2>Cadastro de produto</h2>
 
@@ -145,10 +218,47 @@ $products = getProducts($pdo);
 
   <!-- Cadastro revestimento -->
   <details open>
-    <summary>Titulo</summary>
+    <summary>Seleção de revestimento</summary>
     <div>
       <div>
+        <!-- Categorias -->
+        <ul id="color-pallete-list" class="flex flex-row flex-wrap justify-between pt-2">
+          <?php foreach ($upholsteriesColorPallete["data"] as $colorPallete) : ?>
+            <li class="flex-1 rounded-t-md text-center">
+              <div class="btn-checked-guide mb-3">
+                <input
+                  type="radio"
+                  name="new-op-group-upholstery"
+                  id="new-op-group-upholstery-<?= $colorPallete["color_pallete"] ?>"
+                  class="peer" />
+                <label
+                  for="new-op-group-upholstery-<?= $colorPallete["color_pallete"] ?>"
+                  class="peer-checked:bg-black-39">
+                  <?= $colorPallete["color_pallete"] ?>
+                </label>
+              </div>
+            </li>
+          <?php endforeach; ?>
+        </ul>
 
+
+        <ul class="bg-black-39 h-28 w-full flex flex-wrap gap-3">
+          <?php foreach ($upholsteries['data'] as $upholtery) : ?>
+            <li class="btn-checked">
+              <input
+                type="checkbox"
+                name="new-upholstery-<?= $upholtery["id"] ?>"
+                id="new-upholstery-<?= $upholtery["id"] ?>"
+                class="peer" />
+              <label
+                for="new-upholstery-<?= $upholtery["id"] ?>"
+                class="peer-checked:bg-sprout-300">
+                <img src="<?= $upholtery["image_url"] ?>" alt="<?= $upholtery["type"] ?>" width="16" height="16">
+                <?= $upholtery["type"] ?>
+              </label>
+            </li>
+          <?php endforeach; ?>
+        </ul>
       </div>
 
     </div>
@@ -299,6 +409,12 @@ $products = getProducts($pdo);
             behavior: 'smooth',
           })
         })
+
+        async function fetchUpholsteries() {
+
+        }
+
+
         /* const listRevestimenos = document.querySelector('#revestimento-locais')
         const btnAddRevestimento = document.querySelector('button#btn-add-form-finishing')
         btnAddRevestimento.addEventListener('click', ) */
