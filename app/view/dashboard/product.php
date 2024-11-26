@@ -252,7 +252,7 @@ $upholsteries = getUpholsteries($pdo);
               <label
                 for="new-upholstery-<?= $upholtery["id"] ?>"
                 class="peer-checked:bg-sprout-300">
-                <img src=".<?= $upholtery["image_url"] ?>" alt="<?= $upholtery["reference_code"] ?>">
+                <img src=".<?= $upholtery["image_url"] ?>" alt="<?= $upholtery["reference_code"] ?>" height="50" width="50">
                 <?= $upholtery["reference_code"] ?>
               </label>
             </li>
