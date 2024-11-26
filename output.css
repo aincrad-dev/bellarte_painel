@@ -721,7 +721,13 @@ video {
     display: flex;
   }
   & label {
-    flex-direction: column;
+    flex-direction: row;
+  }
+  & label {
+    align-items: center;
+  }
+  & label {
+    gap: 0.75rem;
   }
   & label {
     border-radius: 0.375rem;
@@ -745,6 +751,18 @@ video {
   }
   & label {
     transition-duration: 100ms;
+  }
+  & label {
+    & img {
+      height: 1.5rem;
+    }
+    & img {
+      width: 1.5rem;
+    }
+    & img {
+      -o-object-fit: cover;
+         object-fit: cover;
+    }
   }
 }
 

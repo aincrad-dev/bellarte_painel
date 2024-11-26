@@ -119,7 +119,7 @@ function getUpholsteriesByColorPallete(PDO $pdo, String $color_pallete)
 
 function getUpholsteries(PDO $pdo)
 {
-  $sql = "SELECT id, type, image_url FROM upholsteries WHERE deleted_at IS NULL ORDER BY type;";
+  $sql = "SELECT id, type, image_url, reference_code FROM upholsteries WHERE deleted_at IS NULL ORDER BY type;";
   try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -170,7 +170,6 @@ $upholsteries = getUpholsteries($pdo);
     <div class="flex gap-3">
       <?php
       $companies = getCompanies($pdo);
-      // var_dump($companies);
       foreach ($companies["data"] as $company) :
       ?>
         <div class="btn-checked">
@@ -244,7 +243,7 @@ $upholsteries = getUpholsteries($pdo);
 
         <ul class="bg-black-39 h-28 w-full flex flex-wrap gap-3">
           <?php foreach ($upholsteries['data'] as $upholtery) : ?>
-            <li class="btn-checked">
+            <li class="btn-checked flex-row gap-2">
               <input
                 type="checkbox"
                 name="new-upholstery-<?= $upholtery["id"] ?>"
@@ -253,8 +252,8 @@ $upholsteries = getUpholsteries($pdo);
               <label
                 for="new-upholstery-<?= $upholtery["id"] ?>"
                 class="peer-checked:bg-sprout-300">
-                <img src=".<?= $upholtery["image_url"] ?>" alt="<?= $upholtery["type"] ?>" width="16" height="16">
-                <?= $upholtery["type"] ?>
+                <img src=".<?= $upholtery["image_url"] ?>" alt="<?= $upholtery["reference_code"] ?>">
+                <?= $upholtery["reference_code"] ?>
               </label>
             </li>
           <?php endforeach; ?>
